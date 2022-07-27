@@ -33,10 +33,16 @@
     cursor: pointer;
     transition: all 0.3s ease;
   }
-  form button:hover {
+  form button:hover:enabled {
     background: #ff6f47;
     color: white;
   }
+
+  form button:disabled{
+    color: #666666;
+    cursor: auto;
+  }
+
   .todo-container {
     display: flex;
     justify-content: center;
