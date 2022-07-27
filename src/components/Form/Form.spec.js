@@ -1,5 +1,5 @@
 import React from 'react';
-import {fireEvent, getByText, render} from '@testing-library/react';
+import {fireEvent, render} from '@testing-library/react';
 import Form from './Form';
 
 describe("Basic rendering of Form", () => {
