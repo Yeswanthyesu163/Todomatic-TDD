@@ -3,11 +3,19 @@ import Todo from "../Todo/Todo";
 
 
 
-const TodoList = () => {
+const TodoList = ({todos, setTodos}) => {
     return(
         <div className="todo-container">
             <ul data-testid="todo-list" className="todo-list">
-               <Todo />
+               {todos && todos.map(todo => (
+                    <Todo
+                    key={todo.id} 
+                    text={todo.text} 
+                    todos={todos} 
+                    todo={todo}
+                    setTodos={setTodos} 
+                    />
+               ))}
             </ul>
         </div>
     );
