@@ -1,11 +1,27 @@
 import './App.css';
-import React,{useState} from 'react';
+import React,{useState, useEffect} from 'react';
 import Form from './components/Form/Form';
 import TodoList from './components/TodoList/TodoList';
 
 function App() {
 
   const [todos, setTodos] = useState([]);
+  const [filteredTodos, setFilterredTodos] = useState([]);
+  const [status, setStatus] = useState("all");
+
+  useEffect(() => {
+    switch(status){
+      case 'completed':
+        setFilterredTodos(todos.filter(todo => todo.completed === true));
+        break;
+      case 'uncompleted':
+        setFilterredTodos(todos.filter(todo => todo.completed === false));
+        break;
+      default:
+        setFilterredTodos(todos);
+        break;
+    }
+  }, [todos,status]);
 
   const submitHandler = (e, inputText) => {
     e.preventDefault();
@@ -21,10 +37,12 @@ function App() {
       </header>
       <Form
       submitHandler ={submitHandler}
+      setStatus = {setStatus}
       />
       <TodoList
       todos = {todos}
       setTodos = {setTodos}
+      filteredTodos = {filteredTodos}
       />
     </div>
   );

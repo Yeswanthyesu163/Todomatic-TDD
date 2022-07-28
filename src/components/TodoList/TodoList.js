@@ -3,7 +3,7 @@ import Todo from "../Todo/Todo";
 
 
 
-const TodoList = ({todos, setTodos}) => {
+const TodoList = ({todos, setTodos, filteredTodos}) => {
 
     const deleteHandler = (todo) => {
         setTodos(todos.filter((el) => el.id !== todo.id));
@@ -23,7 +23,7 @@ const TodoList = ({todos, setTodos}) => {
     return(
         <div className="todo-container">
             <ul data-testid="todo-list" className="todo-list">
-               {todos && todos.map(todo => (
+               {filteredTodos && filteredTodos.map(todo => (
                     <Todo
                     key={todo.id} 
                     text={todo.text} 

@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import Filter from "../Filter/Filter";
 
-const Form = ({submitHandler}) => {
+const Form = ({submitHandler, setStatus}) => {
     const [inputText, setInputText] = useState("");
 
     const inputTextHandler = (e) => {
@@ -19,7 +19,8 @@ const Form = ({submitHandler}) => {
             <button onClick={submit} disabled = {!inputText ? true: false} data-testid="add-button" className="todo-button" type="submit">
                 <i className="fas fa-plus-square"></i>
             </button>
-            <Filter />
+            <Filter 
+            setStatus ={setStatus}/>
         </form>
     );
 }
