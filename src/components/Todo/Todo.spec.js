@@ -2,6 +2,7 @@ import React from 'react';
 import {fireEvent, render} from '@testing-library/react';
 import Todo from './Todo';
 import Form from '../Form/Form';
+import App from '../../App';
 
 
 describe("Basic rendering of the Todo Item", () => {
@@ -23,7 +24,7 @@ describe("Basic rendering of the Todo Item", () => {
 
 describe("Testing the Functionality of the Todo Item", () => {
     it("Should be marked completed when we click on complete", () => {
-        const {getByTestId} = render(<Form/>);
+        const {getByTestId} = render(<App/>);
         fireEvent.change(getByTestId("input-field"), {target:{value: "Hello"}});
         fireEvent.click(getByTestId("add-button"));
         fireEvent.click(getByTestId("complete-button"));
@@ -31,7 +32,7 @@ describe("Testing the Functionality of the Todo Item", () => {
     });
 
     it("Should not be marked completed when we Re-click on complete", () => {
-        const {getByTestId} = render(<Form/>);
+        const {getByTestId} = render(<App/>);
         fireEvent.change(getByTestId("input-field"), {target:{value: "Hello"}});
         fireEvent.click(getByTestId("add-button"));
         fireEvent.click(getByTestId("complete-button"));
@@ -40,7 +41,7 @@ describe("Testing the Functionality of the Todo Item", () => {
     });
 
     it("Should be deleted when we click on delete button", () => {
-        const {getByTestId, queryByText} = render(<Form/>);
+        const {getByTestId, queryByText} = render(<App/>);
         fireEvent.change(getByTestId("input-field"), {target:{value: "Hello"}});
         fireEvent.click(getByTestId("add-button"));
         fireEvent.click(getByTestId("delete-button"));
