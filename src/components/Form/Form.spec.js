@@ -1,7 +1,6 @@
 import React from 'react';
 import {fireEvent, render} from '@testing-library/react';
 import Form from './Form';
-import Todo from '../Todo/Todo';
 
 describe("Basic rendering of Form", () => {
     
@@ -41,10 +40,9 @@ describe("Basic rendering of Form", () => {
 
 describe("Testing the Functionality of the Form", () => {
     it("Should add the given text in the Input to the TodoList", () => {
-        const form = render(<Form />);
-        const todo = render(<Todo/>);
-        fireEvent.change(form.getByTestId("input-field"), {target:{value: "Hello"}});
-        fireEvent.click(form.getByTestId("add-button"));
-        expect(todo.getAllByTestId("todo-item")[0]).toHaveTextContent("Hello");
+        const {getByTestId} = render(<Form />);
+        fireEvent.change(getByTestId("input-field"), {target:{value: "Hello"}});
+        fireEvent.click(getByTestId("add-button"));
+        expect(getByTestId("todo-item")).toHaveTextContent("Hello");
     });
 });
